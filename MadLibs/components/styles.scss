@@ -1,0 +1,235 @@
+/* Scss Document */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+		font-family:Arial, Helvetica, sans-serif; 
+		background-color:#fff;
+ }
+
+
+.header { 
+	width:60%;
+	min-height:100px;
+	
+ 
+ 	background: #005496  ;
+	padding: 2em 20% 3em 20%;
+ 	margin: 0px auto;
+	
+		a { display:inherit; padding:0px; line-height:2em; display:block; }
+ 	
+		h2 {
+			color:#fff;
+ 			font-size:1.25em;
+			text-transform:uppercase;
+			font-weight: normal;
+			margin-bottom:.5em;
+			margin-top:1.25em;
+			text-align: left; 
+ 			
+			}
+		span {
+			width:60%;
+			padding:	0 40% 0 0%;
+			display:block;
+ 			color:#aaadae;
+ 			font-size:1em;
+			line-height:2em;
+ 
+			}
+ }
+/* .header.active {
+	  	background: #005496 url(../images/character-groupA.png) no-repeat 75% 15px;
+
+	 }*/
+	 
+
+div.groupA, div.groupB, div.groupC, div.controls, div.buttonContainer { 
+	margin: 0px auto;
+	background-color: #fff;
+	width:60%;
+	padding-left:20%;
+ 	padding-right:20%;
+
+	font-size:1.1em;
+ 	
+	h2 {
+		color:#000;
+		padding:1em;
+		}
+		
+	ul{ 
+		padding:0em 1em 0em 1em;
+		text-align:left;
+	    display: inline-block;
+ 			li { 
+				display: inline-block;
+				font-size:.9em;
+				line-height:1.5em;
+			 	
+				span { float:none;}
+				
+				}
+ }	
+ 
+  
+	div {
+		padding-top:2%;
+		padding-left:2%;
+ 		margin-bottom:0;
+		width: 100%;
+		border-top:1px solid #bababa;
+ 
+		
+			span {
+				width: 85%;
+				margin: 0em 1em 1em 1em;
+				line-height:1em;
+				font-size:16px;
+				display:block;}
+		}
+	
+}
+ 
+ 
+ 
+div.last { padding-bottom:2.5em;}
+
+div.buttonContainer { text-align:center; margin-top:1em;}
+ 
+
+a.ng-binding {
+	background:url(../images/selection.png) no-repeat center 6px;
+	text-indent:-9999px;
+ 	width:28px;
+	height:36px;
+  	margin-bottom:.25em;
+	margin-right:1em;
+	padding:.2em .2em;
+	display:block;
+	float:left;
+
+ }
+a.active.ng-binding  { background-position: center -40px; } 	
+
+input { 
+ 	color: #ffffff;
+ 	background-color:#005496;
+	border:0px;
+ 	line-height:2em;
+	font-size:16px;
+ 	display: inline-block;
+ 	margin: 0;
+  	padding: 0 0 0 5px;
+   	text-overflow: ellipsis;
+  	font-weight: 100;
+	border-bottom: 2px solid #F0F0F0;
+	 
+ 	transition: background-color 0.9s ease;
+
+   }
+	
+input:disabled { 
+	background-color:#ffffff;
+ 	font-size:16px;
+	border-bottom: 2px solid rgba(0,0,0,0.2);
+	padding-left:5px;
+
+ }
+ 
+ input:focus {
+	color:#8BC53E;
+   -webkit-box-shadow: 0 0 5px 1px #005496;
+  	-moz-box-shadow: 0 0 5px 1px #005496;
+ 	 box-shadow: 0 0 5px 1px #005496;
+  }
+ 
+ 
+::-webkit-input-placeholder{
+  	text-align: left;
+	padding-left:2px;  
+  }
+
+
+div.footer { 
+	
+	text-align:center;
+	background-color:#005496;
+	padding-top:1em;
+	padding-bottom:1.5em;
+	margin-top:-1.5%;
+	
+	
+}
+
+button {
+		padding: 1em .2em;
+		color:#005496;
+		min-width:100px;
+		font-size:.7em;
+		border:none;
+		border-radius: 6px;
+ 		cursor: pointer;
+		background-color:#E5E5E5;
+		
+		
+	}
+	
+	button:hover {
+		transition: background-color 0.9s ease;
+		background-color:#8BC53E;
+		color:#fff;	
+	}
+
+
+ 
+ 
+
+ 	

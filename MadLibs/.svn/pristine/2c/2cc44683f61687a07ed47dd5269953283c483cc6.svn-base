@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+
+<head>
+
+    <script src="http://code.angularjs.org/1.2.1/angular.js"></script>
+    <script src="http://code.angularjs.org/1.2.1/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="src/stringFormatterModule.js"></script>
+   <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link rel='Shortcut Icon' href="favicon.ico" type='image/x-icon' />
+</head>
+
+
+<body>
+    <style>
+
+        .my-switch-animation.ng-enter,
+        .my-switch-animation.ng-leave
+        {
+            -webkit-transition: 0.5s linear all;
+            -moz-transition: 0.5s linear all;
+            -o-transition: 0.5s linear all;
+            transition: 0.5s linear all;
+            position: absolute;
+        }
+
+        .my-switch-animation.ng-enter
+        {
+            left: 100%;
+        }
+
+            .my-switch-animation.ng-leave,
+            .my-switch-animation.ng-enter.ng-enter-active
+            {
+                left: 0;
+            }
+
+                .my-switch-animation.ng-leave.ng-leave-active
+                {
+                    left: -100%;
+                }
+
+
+    </style>
+        <style>
+        .footer span
+        {
+            color: #ffffff;
+            font-size: .9em;
+        }
+
+        .form
+        {
+            margin-top: 15px;
+            background-color: #FFF;
+            width: 60%;
+            padding-left: 20%;
+            padding-right: 20%;
+            font-size: 1.1em;
+        }
+    </style>
+    <div ng-controller="HelloController">
+         
+         <div class="header">
+            <div class="matt"></div>
+            <a href="#">
+                <img src="http://macreative.us/wp-content/uploads/ma-logo-long.png" /></a>
+            <h2>Mad Libs</h2>
+            <span ng-hide="GroupA[0].HiddeGroup">Welcome to MA! We're looking forward to getting to know each other, and we'd like to help you get started. So here's a chance to tell us a little bit about yourself. Please use your imagination and combine several Mad Lib statements below to create a fun story that you'll share with your new co-workers. <strong style="font-weight: bold; color: #8BC53E;">Choose at least three statements (feel free to do more) from each of the following groups of statement options to fill out and create your story</strong>. We've filled in one in Group A as an example to show you how it's done. When you're finished, you'll be able to email your story to your new colleagues. Have fun - and again, welcome aboard!</span>
+
+
+        </div>
+
+         <div class="form" ng-hide="GroupA[0].HiddeGroup">
+
+            <span>Hi, my name is
+           
+                       
+
+                        <input type="text" ng-model="FirstName" ng-disabled="false" />, and I'm excited to start here in the
+           
+                       
+
+                        <input type="text" ng-model="Department" ng-disabled="false" />
+                department.
+</span>
+            <br />
+            <span ng-show="reqForm" style="color: red">fill above form</span>
+        </div>
+       
+<!--         <div class="panel-heading">
+                    <button class="btn btn-info" ng-click="myExp=0">One</button>
+                    <button class="btn btn-info" ng-click="myExp=1">Two</button>
+                    <button class="btn btn-info" ng-click="myExp=2">Three</button>
+                </div>-->
+
+         <div  ng-switch="myExp">                       
+                        <div ng-switch-when="0" class="groupA my-switch-animation">
+                            <h2>GROUP A</h2>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[0].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[0].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[0].TextOptionOne}}</a><span>1.- Hi, my name is
+           
+                       
+
+                        <input type="text" ng-model="FirstName" ng-disabled="!GroupA[0].Questions[0].Selected" />, but my friends call me
+           
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[0].AnswerTwo" ng-disabled="!GroupA[0].Questions[0].Selected" />; I just started here in the
+           
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[0].AnswerThree" ng-disabled="!GroupA[0].Questions[0].Selected" />
+                                    department.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[1].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[1].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[1].TextOptionOne}}</a>
+                                <span>2.- Hi, my name is
+               
+                       
+
+                        <input type="text" ng-model="FirstName" ng-disabled="!GroupA[0].Questions[1].Selected" />
+                                    , and I'm excited to start here in the
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[1].AnswerTwo" ng-disabled="!GroupA[0].Questions[1].Selected" />department.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[2].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[2].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[2].TextOptionOne}}</a><span>3.- The last place I worked was
+           
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[2].AnswerOne" ng-disabled="!GroupA[0].Questions[2].Selected" />, but MA is better because
+           
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[2].AnswerTwo" ng-disabled="!GroupA[0].Questions[2].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[3].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[3].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[3].TextOptionOne}}</a>
+                                <span>4.- My previous job was
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[3].AnswerOne" ng-disabled="!GroupA[0].Questions[3].Selected" />and now I'm really excited to be
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[3].AnswerTwo" ng-disabled="!GroupA[0].Questions[3].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[4].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[4].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[4].TextOptionOne}}</a>
+                                <span>5.- When I got hired, I was so
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[4].AnswerOne" ng-disabled="!GroupA[0].Questions[4].Selected" />
+                                    I nearly
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[4].AnswerTwo" ng-disabled="!GroupA[0].Questions[4].Selected" />
+                                    out of my
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[4].AnswerThree" ng-disabled="!GroupA[0].Questions[4].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[5].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[5].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[5].TextOptionOne}}</a>
+                                <span>6.- I think I'm particularly qualified for this job because I once
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[5].AnswerOne" ng-disabled="!GroupA[0].Questions[5].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[6].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[6].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[6].TextOptionOne}}</a>
+                                <span>7.- I think the most exciting part of working in downtown Detroit will be
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[6].AnswerOne" ng-disabled="!GroupA[0].Questions[6].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[7].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[7].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[7].TextOptionOne}}</a>
+                                <span>8.- I went to school at
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[7].AnswerOne" ng-disabled="!GroupA[0].Questions[7].Selected" />
+                                    , where I majored in
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[7].AnswerTwo" ng-disabled="!GroupA[0].Questions[7].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[8].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[8].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[8].TextOptionOne}}</a>
+                                <span>9.- My favorite
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[8].AnswerOne" ng-disabled="!GroupA[0].Questions[8].Selected" />
+                                    in school was 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[8].AnswerTwo" ng-disabled="!GroupA[0].Questions[8].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[9].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[9].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[9].TextOptionOne}}</a>
+                                <span>10.- The best-looking group in the company is clearly the
+               
+                       
+
+                        <input type="text" placeholder="Creative" ng-model="GroupA[0].Questions[9].AnswerOne" ng-disabled="!GroupA[0].Questions[9].Selected" />
+                                    department.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[0].Questions[10].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[10].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[10].TextOptionOne}}</a>
+                                <span>11.- One thing that attracted me to Marketing Associates is
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[10].AnswerOne" ng-disabled="!GroupA[0].Questions[10].Selected" />
+                                    , plus you can walk to
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[10].AnswerTwo" ng-disabled="!GroupA[0].Questions[10].Selected" />
+                                    from here.
+                    </span>
+                            </div>
+                            <div class="last">
+                                <a ng-class="{'active': GroupA[0].Questions[11].Selected}" ng-click="SelectOption(GroupA[0].GroupId,GroupA[0].Questions[11].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[0].Questions[11].TextOptionOne}}</a>
+                                <span>12.- When I was young, I always wanted to be a
+               
+                       
+
+                        <input type="text" ng-model="GroupA[0].Questions[11].AnswerOne" ng-disabled="!GroupA[0].Questions[11].Selected" />
+                                    .
+                    </span>
+                            </div>
+                        </div>
+                        <div ng-switch-when="1" class="groupB my-switch-animation">
+
+                            <h2>GROUP B</h2>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[0].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[0].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[0].TextOptionOne}}</a>
+                                <span>1.- In my spare time I enjoy 
+           
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[0].AnswerOne" ng-disabled="!GroupA[1].Questions[0].Selected" />
+                                    and
+           
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[0].AnswerTwo" ng-disabled="!GroupA[1].Questions[0].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[1].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[1].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[1].TextOptionOne}}</a>
+                                <span>2.- One embarrassing thing about me is 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[1].AnswerOne" ng-disabled="!GroupA[1].Questions[1].Selected" />
+                                    .</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[2].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[2].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[2].TextOptionOne}}</a><span>
+                      3.- Before I start work in the morning, I always 
+           
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[2].AnswerOne" ng-disabled="!GroupA[1].Questions[2].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[3].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[3].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[3].TextOptionOne}}</a>
+                                <span>4.- The thing I most
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[3].AnswerOne" ng-disabled="!GroupA[1].Questions[3].Selected" />about my co-workers so far is their 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[3].AnswerTwo" ng-disabled="!GroupA[1].Questions[3].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[4].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[4].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[4].TextOptionOne}}</a>
+                                <span>5.- When I was a kid, I got in trouble for 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[4].AnswerOne" ng-disabled="!GroupA[1].Questions[4].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[5].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[5].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[5].TextOptionOne}}</a>
+                                <span>6.- In the future, I hope to 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[5].AnswerOne" ng-disabled="!GroupA[1].Questions[5].Selected" />
+                                    my
+                       
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[5].AnswerTwo" ng-disabled="!GroupA[1].Questions[5].Selected" />
+                                    at MA; after all, I don't consider this just a job - it's a 
+                       
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[5].AnswerThree" ng-disabled="!GroupA[1].Questions[5].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[6].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[6].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[6].TextOptionOne}}</a>
+                                <span>7.- I really love to 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[6].AnswerOne" ng-disabled="!GroupA[1].Questions[6].Selected" />
+                                    , especially after
+                       
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[6].AnswerTwo" ng-disabled="!GroupA[1].Questions[6].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[7].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[7].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[7].TextOptionOne}}</a>
+                                <span>8.- So far, my co-workers have been incredibly 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[7].AnswerOne" ng-disabled="!GroupA[1].Questions[7].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[8].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[8].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[8].TextOptionOne}}</a>
+                                <span>9.- My
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[8].AnswerOne" ng-disabled="!GroupA[1].Questions[8].Selected" />
+                                    once told me that I'm a great 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[8].AnswerTwo" ng-disabled="!GroupA[1].Questions[8].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[9].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[9].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[9].TextOptionOne}}</a>
+                                <span>10.- If I could make a special request for Cake Day, it would be 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[9].AnswerOne" ng-disabled="!GroupA[1].Questions[9].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[1].Questions[10].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[10].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[10].TextOptionOne}}</a>
+                                <span>11.- My ideal alternate career would be working at 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[10].AnswerOne" ng-disabled="!GroupA[1].Questions[10].Selected" />
+                                    as a 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[10].AnswerTwo" ng-disabled="!GroupA[1].Questions[10].Selected" />
+                                    .
+                    </span>
+                            </div>
+                            <div class="last">
+                                <a ng-class="{'active': GroupA[1].Questions[11].Selected}" ng-click="SelectOption(GroupA[1].GroupId,GroupA[1].Questions[11].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[1].Questions[11].TextOptionOne}}</a>
+                                <span>12.- I wish somebody had told me that 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[1].Questions[11].AnswerOne" ng-disabled="!GroupA[1].Questions[11].Selected" />
+                                    .
+                    </span>
+                            </div>
+                        </div>
+                        <div ng-switch-when="2" class="groupC my-switch-animation">
+                            <h2>GROUP C</h2>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[0].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[0].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[0].TextOptionOne}}</a>
+                                <span>1.- One thing most people don't know about me is 
+           
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[0].AnswerOne" ng-disabled="!GroupA[2].Questions[0].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[1].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[1].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[1].TextOptionOne}}</a>
+                                <span>2.- If you ever see me at my desk 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[1].AnswerOne" ng-disabled="!GroupA[2].Questions[1].Selected" />
+                                    , just ignore it - it helps me
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[1].AnswerTwo" ng-disabled="!GroupA[2].Questions[1].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[2].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[2].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[2].TextOptionOne}}</a>
+                                <span>3.- I believe the 
+           
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[2].AnswerOne" ng-disabled="!GroupA[2].Questions[2].Selected" />
+                                    are our future.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[3].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[3].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[3].TextOptionOne}}</a>
+                                <span>4.- If I could slap any celebrity, it would be 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[3].AnswerOne" ng-disabled="!GroupA[2].Questions[3].Selected" />because 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[3].AnswerTwo" ng-disabled="!GroupA[2].Questions[3].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[4].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[4].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[4].TextOptionOne}}</a>
+                                <span>5.- My special superpower is 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[4].AnswerOne" ng-disabled="!GroupA[2].Questions[4].Selected" />
+                                    , though I try not to use it for evil.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[5].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[5].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[5].TextOptionOne}}</a>
+                                <span>6.- When I'm not in the office, I'm usually 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[5].AnswerOne" ng-disabled="!GroupA[2].Questions[5].Selected" />
+                                    with my 
+                        
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[5].AnswerTwo" ng-disabled="!GroupA[2].Questions[5].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[6].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[6].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[6].TextOptionOne}}</a>
+                                <span>7.- My favorite office supply is 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[6].AnswerOne" ng-disabled="!GroupA[2].Questions[6].Selected" />.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[7].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[7].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[7].TextOptionOne}}</a>
+                                <span>8.- My signature dance move that I'll be breaking out at the MA holiday party is 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[7].AnswerOne" ng-disabled="!GroupA[2].Questions[7].Selected" />. </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[8].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[8].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[8].TextOptionOne}}</a>
+                                <span>9.- I have a weird interest in 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[8].AnswerOne" ng-disabled="!GroupA[2].Questions[8].Selected" />.</span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[9].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[9].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[9].TextOptionOne}}</a>
+                                <span>10.- Sometimes at the office I like to 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[9].AnswerOne" ng-disabled="!GroupA[2].Questions[9].Selected" />
+                                    department.
+                    </span>
+                            </div>
+                            <div>
+                                <a ng-class="{'active': GroupA[2].Questions[10].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[10].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[10].TextOptionOne}}</a>
+                                <span>11.- I'm surprisingly 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[10].AnswerOne" ng-disabled="!GroupA[2].Questions[10].Selected" />
+                                    for my
+                       
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[10].AnswerTwo" ng-disabled="!GroupA[2].Questions[10].Selected" />.</span>
+                            </div>
+                            <div class="last">
+                                <a ng-class="{'active': GroupA[2].Questions[11].Selected}" ng-click="SelectOption(GroupA[2].GroupId,GroupA[2].Questions[11].QuestionId);" style="cursor: pointer; text-decoration: underline;">{{GroupA[2].Questions[11].TextOptionOne}}</a>
+                                <span>12.- I once 
+               
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[11].AnswerOne" ng-disabled="!GroupA[2].Questions[11].Selected" />
+                                    a man in 
+                       
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[11].AnswerTwo" ng-disabled="!GroupA[2].Questions[11].Selected" />
+                                    just to watch him
+                       
+                       
+
+                        <input type="text" ng-model="GroupA[2].Questions[11].AnswerThree" ng-disabled="!GroupA[2].Questions[11].Selected" />.
+                    </span>
+                            </div>
+                        </div>
+                </div>
+         <div class="footer">
+                <span ng-show="minSelectOptions">Please select at least 3 options
+                </span>
+                <span ng-show="errorEmptyAnswer">{{emptyAnswer}}
+                </span>
+                <br />
+                <br />
+                <button ng-disabled="!canBack" class="previousCta" ng-click="Previous()">Previous</button>
+                <button ng-disabled="!canNext" class="nextCta" ng-click="Next()">Next </button>
+                <button class="nextCta" ng-click="Finish()" ng-hide="!endQuestionary">Finish</button>
+
+            </div>
+
+    </div>
+
+</body>
+<script>
+    (function (app) {
+        'use strict';
+        app.controller("HelloController", function ($scope, $compile, $timeout) {
+
+            $scope.myExp = 0;
+
+            $scope.canBack = false;
+            $scope.canNext = true;
+            $scope.minSelectOptions = false;
+            $scope.emptyAnswer = '';
+            $scope.errorEmptyAnswer = false;
+            $scope.FinishLibs = false;
+            $scope.endQuestionary = false;
+            $scope.YourStory = true;
+            $scope.hideYourStoryButtons = true;
+            $scope.hideEndButtons = true;
+
+            $scope.FirstName = '';
+            $scope.Department = '';
+            $scope.reqForm = false;
+
+            $scope.SaveItems = [
+                {
+                    GroupIndex: 0,
+                    Questions: []
+                },
+                {
+                    GroupIndex: 1,
+                    Questions: []
+                },
+                {
+                    GroupIndex: 2,
+                    Questions: []
+                }
+            ];
+
+            var countSelection = 0;
+            var countIndexGroup = 0;
+            $scope.Next = function () {
+
+                if ($scope.FirstName === '' &&
+                $scope.Department === '') {
+                    $scope.reqForm = true;
+                    return;
+                }
+                else {
+                    $scope.reqForm = false;
+                }
+                var lastItem = $scope.GroupA.length;
+
+                if ($scope.GroupA[countIndexGroup].CountSelectedOptions < 3) {
+                    $scope.minSelectOptions = true;
+                    return;
+                }
+
+                $scope.minSelectOptions = false;
+                var emptyAnswers = false;
+
+                $scope.GroupA[0].Questions[0].AnswerOne = $scope.FirstName;
+                $scope.GroupA[0].Questions[1].AnswerOne = $scope.FirstName;
+
+                for (indexQuestions = 0; indexQuestions < $scope.GroupA[countIndexGroup].Questions.length; indexQuestions++) {
+
+                    if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].Selected) {
+                        //console.log($scope.GroupA[countIndexGroup].Questions[indexQuestions].AnswerOne.length);
+                        if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].TotalAnswers === 1) {
+                            if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].AnswerOne.length === 0) {
+                                $scope.emptyAnswer = 'Please enter an Answer in Option: ' + ($scope.GroupA[countIndexGroup].Questions[indexQuestions].QuestionId + 1);
+                                emptyAnswers = true;
+                                break;
+                            }
+                        }
+                        else if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].TotalAnswers === 2) {
+                            if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].AnswerOne.length === 0
+                                || $scope.GroupA[countIndexGroup].Questions[indexQuestions].AnswerTwo.length === 0) {
+                                $scope.emptyAnswer = 'Please enter an Answer in Option: ' + ($scope.GroupA[countIndexGroup].Questions[indexQuestions].QuestionId + 1);
+                                emptyAnswers = true;
+                                break;
+                            }
+
+                        }
+                        else if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].TotalAnswers === 3) {
+                            if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].AnswerOne.length === 0
+                                || $scope.GroupA[countIndexGroup].Questions[indexQuestions].AnswerTwo.length === 0
+                            || $scope.GroupA[countIndexGroup].Questions[indexQuestions].AnswerThree.length === 0) {
+                                $scope.emptyAnswer = 'Please enter an Answer in Option: ' + ($scope.GroupA[countIndexGroup].Questions[indexQuestions].QuestionId + 1);
+                                emptyAnswers = true;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+
+                if (emptyAnswers) {
+                    $scope.errorEmptyAnswer = true;
+                    return;
+                }
+
+                $scope.errorEmptyAnswer = false;
+
+             
+                console.log($scope.myExp);
+                //validate if is the last group
+                if (countIndexGroup === $scope.GroupA.length - 1) {
+                    $scope.endQuestionary = true;
+                    var indexQuestions = 0;
+                    for (indexQuestions = 0; indexQuestions < $scope.GroupA[countIndexGroup].Questions.length; indexQuestions++) {
+
+                        //console.log($scope.GroupA[countIndexGroup].Questions[indexQuestions].QuestionId, $scope.GroupA[countIndexGroup].GroupId);
+
+                        if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].Selected) {
+                            //console.log(SaveItems[countIndexGroup].Question);
+                            $scope.SaveItems[countIndexGroup].Questions.push($scope.GroupA[countIndexGroup].Questions[indexQuestions]);
+                        }
+                    }
+                    return;
+                };
+
+
+
+                $scope.GroupA[countIndexGroup].HiddeGroup = true;
+                //$scope.GroupA[countIndexGroup + 1].HiddeGroup = false;
+
+                var indexQuestions = 0;
+                for (indexQuestions = 0; indexQuestions < $scope.GroupA[countIndexGroup].Questions.length; indexQuestions++) {
+
+                    if ($scope.GroupA[countIndexGroup].Questions[indexQuestions].Selected) {
+                        //console.log(SaveItems[countIndexGroup].Question);
+                        $scope.SaveItems[countIndexGroup].Questions.push($scope.GroupA[countIndexGroup].Questions[indexQuestions]);
+                    }
+                }
+                //console.log(SaveItems);
+                countIndexGroup = countIndexGroup + 1;
+                $scope.canBack = true;
+                $scope.FinishLibs = true;
+                $scope.YourStory = false;
+                $scope.hideYourStoryButtons = false;
+                $scope.myExp = $scope.GroupA[countIndexGroup].GroupId;
+            }
+
+            $scope.Continue = function () {
+
+                //console.log(countIndexGroup);
+                $scope.FinishLibs = false;
+                $scope.GroupA[countIndexGroup].HiddeGroup = false;
+                $scope.hideYourStoryButtons = true;
+            }
+
+            $scope.GoBack = function () {
+                //console.log(countIndexGroup);
+                $scope.FinishLibs = false;
+                if (countIndexGroup === $scope.GroupA.length - 1) {
+                    $scope.hideEndButtons = true;
+                    $scope.GroupA[countIndexGroup].HiddeGroup = false;
+
+                }
+                else {
+                    countIndexGroup = countIndexGroup - 1
+                    $scope.GroupA[countIndexGroup].HiddeGroup = false;
+                }
+                $scope.hideYourStoryButtons = true;
+            }
+
+            $scope.Print = function () {
+                window.print();
+            }
+
+            $scope.Previous = function () {
+
+                if (countIndexGroup === 0) {
+                    $scope.YourStory = true;
+                    $scope.hideYourStoryButtons = true;
+                    $scope.GroupA[countIndexGroup].HiddeGroup = false
+                    return;
+                }
+                $scope.endQuestionary = false;
+                $scope.hideYourStoryButtons = true;
+                $scope.SaveItems[countIndexGroup - 1].Questions = [];
+                $scope.GroupA[countIndexGroup].HiddeGroup = true;
+                $scope.GroupA[countIndexGroup - 1].HiddeGroup = false;
+
+                countIndexGroup = countIndexGroup - 1;
+                $scope.YourStory = false;
+            }
+
+            $scope.SelectOption = function (GroupId, QuestionId) {
+                $scope.GroupA[GroupId].Questions[QuestionId].Selected = !$scope.GroupA[GroupId].Questions[QuestionId].Selected
+
+                if (!$scope.GroupA[GroupId].Questions[QuestionId].Selected) {
+                    $scope.GroupA[GroupId].Questions[QuestionId].TextOptionOne = 'Select Option';
+                    $scope.GroupA[GroupId].Questions[QuestionId].AnswerOne = '';
+                    $scope.GroupA[GroupId].Questions[QuestionId].AnswerTwo = '';
+                    $scope.GroupA[GroupId].Questions[QuestionId].AnswerThree = '';
+                    $scope.GroupA[GroupId].CountSelectedOptions = $scope.GroupA[GroupId].CountSelectedOptions - 1;
+                }
+                else {
+                    $scope.GroupA[GroupId].Questions[QuestionId].TextOptionOne = 'Undo';
+                    $scope.GroupA[GroupId].CountSelectedOptions = $scope.GroupA[GroupId].CountSelectedOptions + 1;
+
+                }
+
+
+
+            };
+
+            $scope.HideQuestion = function (questionId) {
+                alert('a');
+            }
+
+            $scope.Finish = function () {
+                //console.log(SaveItems);
+                $scope.FinishLibs = true;
+                $scope.hideEndButtons = false;
+            }
+
+            $scope.GroupA = [
+                {
+                    GroupId: 0,
+                    HiddeGroup: false,
+                    CountSelectedOptions: 0,
+                    Questions: [
+                                {
+                                    QuestionId: 0,
+                                    Question: 'Hi, my name is {0}, but my friends call me {1}; I just started here in the {2} department.',
+                                    Selected: false,
+                                    TotalAnswers: 3,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 1,
+                                    Question: " Hi, my name is {0}, and I'm excited to start here in the {1} department.",
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 2,
+                                    Question: 'The last place I worked was {0}, but MA is better because {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 3,
+                                    Question: "My previous job was {0} and now I'm really excited to be {1}.",
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 4,
+                                    Question: 'When I got hired, I was so {0} I nearly {1} out of my {2}.',
+                                    Selected: false,
+                                    TotalAnswers: 3,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 5,
+                                    Question: " I think I'm particularly qualified for this job because I once {0}.",
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 6,
+                                    Question: ' I think the most exciting part of working in downtown Detroit will be {0}.',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 7,
+                                    Question: ' I went to school at {0}, where I majored in {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 8,
+                                    Question: 'My favorite {0} in school was {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 9,
+                                    Question: 'The best-looking group in the company is clearly the {0} department. ',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 10,
+                                    Question: ' One thing that attracted me to Marketing Associates is {0}, plus you can walk to {1} from here.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 11,
+                                    Question: 'When I was young, I always wanted to be a {0}.',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                }]
+                },
+                {
+                    GroupId: 1,
+                    HiddeGroup: true,
+                    CountSelectedOptions: 0,
+                    Questions: [
+                                {
+                                    QuestionId: 0,
+                                    Question: 'In my spare time I enjoy {0} and {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 1,
+                                    Question: 'One embarrassing thing about me is {0}.',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 2,
+                                    Question: 'Before I start work in the morning, I always {0}. ',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 3,
+                                    Question: 'The thing I most {0} about my co-workers so far is their {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 4,
+                                    Question: 'When I was a kid, I got in trouble for {0}. ',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 5,
+                                    Question: "In the future, I hope to {0} my {1} at MA; after all, I don't consider this just a job - it's a {2}.",
+                                    Selected: false,
+                                    TotalAnswers: 3,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 6,
+                                    Question: 'I really love to {0} , especially after {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 7,
+                                    Question: 'So far, my co-workers have been incredibly {0}. ',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 8,
+                                    Question: "My {0} once told me that I'm a great {1}. ",
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 9,
+                                    Question: 'If I could make a special request for Cake Day, it would be {0}.',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 10,
+                                    Question: 'My ideal alternate career would be working at {0} as a {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 11,
+                                    Question: 'I wish somebody had told me that {0}.',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                }]
+                },
+                {
+                    GroupId: 2,
+                    HiddeGroup: true,
+                    CountSelectedOptions: 0,
+                    Questions: [
+                                {
+                                    QuestionId: 0,
+                                    Question: "One thing most people don't know about me is {0}.",
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 1,
+                                    Question: 'If you ever see me at my desk {0} , just ignore it - it helps me {1}.',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 2,
+                                    Question: 'I believe the {0} are our future.',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 3,
+                                    Question: 'If I could slap any celebrity, it would be {0} because {1}. ',
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 4,
+                                    Question: 'My special superpower is {0} , though I try not to use it for evil.',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 5,
+                                    Question: "When I'm not in the office, I'm usually {0} with my {1}. ",
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 6,
+                                    Question: 'My favorite office supply is {0} clips. ',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 7,
+                                    Question: "My signature dance move that I'll be breaking out at the MA holiday party is {0}. ",
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 8,
+                                    Question: 'I have a weird interest in {0}. ',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 9,
+                                    Question: ' Sometimes at the office I like to {0} into the speakerphone. ',
+                                    Selected: false,
+                                    TotalAnswers: 1,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 10,
+                                    Question: "I'm surprisingly {0} for my {1}. ",
+                                    Selected: false,
+                                    TotalAnswers: 2,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                },
+                                {
+                                    QuestionId: 11,
+                                    Question: 'I once {0} a man in {1} just to watch him {2}. ',
+                                    Selected: false,
+                                    TotalAnswers: 3,
+                                    AnswerOne: '',
+                                    AnswerTwo: '',
+                                    AnswerThree: '',
+                                    TextOptionOne: 'Select Option'
+                                }]
+                }
+            ];
+
+        });
+
+
+    })(angular.module("MyApp", ["ngAnimate"]));
+</script>
+    <script>$(document).ready(function () { $(".matt").animate({ opacity: 1, backgroundPositionX: "0px" }, 1200); });</script>
+</html>

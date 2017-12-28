@@ -1,0 +1,249 @@
+@import url(http://fonts.googleapis.com/css?family=Nothing+You+Could+Do);
+/* Scss Document */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff; }
+
+.Answer {
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 1.9em; }
+
+.header {
+  width: 60%;
+  min-height: 140px;
+  background: #005496;
+  padding: 2em 20% 3em 20%;
+  margin: 0px auto; }
+  .header a {
+    display: inherit;
+    padding: 0px;
+    line-height: 2em;
+    display: block;
+    padding-bottom: 15px; }
+  .header h2 {
+    color: #fff;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: .5em;
+    margin-top: 1.25em;
+    text-align: left; }
+  .header span {
+    width: 60%;
+    padding: 0 40% 0 0%;
+    display: block;
+    color: #aaadae;
+    font-size: 1em;
+    line-height: 2em; }
+
+/* .header.active {
+	  	background: #005496 url(../images/character-groupA.png) no-repeat 75% 15px;
+
+	 }*/
+div.groupA, div.groupB, div.groupC, div.controls, div.buttonContainer, div.form {
+  margin: 0px auto;
+  background-color: #fff;
+  width: 60%;
+  padding-left: 20%;
+  padding-right: 20%;
+  font-size: 1.1em; }
+  div.groupA h2, div.groupB h2, div.groupC h2, div.controls h2, div.buttonContainer h2, div.form h2 {
+    color: #000;
+    padding: 1em; }
+  div.groupA ul, div.groupB ul, div.groupC ul, div.controls ul, div.buttonContainer ul, div.form ul {
+    padding: 0em 1em 0em 1em;
+    text-align: left;
+    display: inline-block; }
+    div.groupA ul li, div.groupB ul li, div.groupC ul li, div.controls ul li, div.buttonContainer ul li, div.form ul li {
+      display: inline-block;
+      font-size: .9em;
+      line-height: 1.5em; }
+      div.groupA ul li span, div.groupB ul li span, div.groupC ul li span, div.controls ul li span, div.buttonContainer ul li span, div.form ul li span {
+        float: none; }
+  div.groupA div, div.groupB div, div.groupC div, div.controls div, div.buttonContainer div, div.form div {
+    padding-top: 2%;
+    padding-left: 2%;
+    margin-bottom: 0;
+    width: 100%;
+    border-top: 1px solid #bababa; }
+    div.groupA div span, div.groupB div span, div.groupC div span, div.controls div span, div.buttonContainer div span, div.form div span {
+      width: 85%;
+      margin: 0em 1em 1em 1em;
+      line-height: 1em;
+      font-size: 16px;
+      display: block; }
+
+div.form, .storyContainer {
+  font-weight: lighter;
+  border-bottom: 1px solid #666;
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+  background-color: #f1f1f1;
+  color: #000; }
+  div.form div, .storyContainer div {
+    background-color: #f1f1f1; }
+  div.form p, .storyContainer p {
+    width: 100%;
+    padding: 0em 1em 0em 1em;
+    line-height: 1em; }
+
+div.last {
+  padding-bottom: 2.5em; }
+
+div.buttonContainer {
+  text-align: center;
+  margin-top: 1em; }
+
+a.ng-binding {
+  background: url(../images/selection.png) no-repeat center 6px;
+  text-indent: -9999px;
+  width: 28px;
+  height: 36px;
+  margin-bottom: .25em;
+  margin-right: 1em;
+  padding: .2em .2em;
+  display: block;
+  float: left; }
+
+a.active.ng-binding {
+  background-position: center -40px; }
+
+input {
+  color: #ffffff;
+  background-color: #005496;
+  border: 0px;
+  line-height: 2em;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0;
+  padding: 0 0 0 5px;
+  text-overflow: ellipsis;
+  font-weight: 100;
+  border-bottom: 2px solid #F0F0F0;
+  transition: background-color 0.9s ease; }
+
+input:disabled {
+  background-color: #ffffff;
+  font-size: 16px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  padding-left: 5px; }
+
+input:focus {
+  color: #8BC53E;
+  -webkit-box-shadow: 0 0 5px 1px #005496;
+  -moz-box-shadow: 0 0 5px 1px #005496;
+  box-shadow: 0 0 5px 1px #005496; }
+
+::-webkit-input-placeholder {
+  text-align: left;
+  padding-left: 2px; }
+
+div.footer {
+  text-align: center;
+  background-color: #005496;
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  margin-top: -1.5%;
+  display: none; }
+
+button, #share {
+  padding: 1em .2em;
+  color: #005496;
+  min-width: 100px;
+  font-size: .7em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #E5E5E5; }
+
+button:hover, #share:hover {
+  transition: background-color 0.1s ease;
+  background-color: #8BC53E;
+  color: #fff; }
+
+.matt {
+  width: 300px;
+  height: 232px;
+  background: url(../images/character-groupA.png) no-repeat 75% 0px;
+  padding: 2px;
+  float: right;
+  opacity: 0;
+  position: relative;
+  z-index: 999;
+  margin: -2% auto 0px auto; }
+
+@media print {
+  .header span {
+    display: none; }
+
+  .header {
+    min-height: 50px; }
+
+  div.form {
+    display: none; }
+
+  .matt {
+    width: 60px;
+    hanging-punctuation: 139px;
+    background-size: 60px 139px;
+    margin: 0px; }
+
+  a.logo img {
+    width: 100%; }
+
+  .buttonContainer {
+    display: none; }
+
+  .storyContainer {
+    background-color: #FFFFFF;
+    border-bottom: none; }
+
+  .storyContainer div {
+    background-color: #FFFFFF !important; } }

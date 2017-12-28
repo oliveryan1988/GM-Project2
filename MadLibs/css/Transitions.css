@@ -1,0 +1,36 @@
+﻿/*Transistion View*/
+.my-switch-animation.ng-enter,
+.my-switch-animation.ng-leave {
+  -webkit-transition:1s ease-out all;
+  -moz-transition:1s ease-out all;
+  -o-transition:1s ease-out all;
+  transition:1s ease-out all;
+
+  position:absolute;
+}
+
+.my-switch-animation.ng-enter {
+  left:100%;
+}
+
+.my-switch-animation.ng-leave,
+.my-switch-animation.ng-enter.ng-enter-active {
+  left:0;
+}
+
+.my-switch-animation.ng-leave.ng-leave-active {
+  left:-100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
